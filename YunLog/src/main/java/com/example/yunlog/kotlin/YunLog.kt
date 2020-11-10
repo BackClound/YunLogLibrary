@@ -29,6 +29,9 @@ object YunLog {
 
     }
 
+    fun d(tag: String? = null, vararg parameters: Any) {
+
+    }
 
     private fun log(config: YunLogConfig, @YunLogType.Type type: Int, tag: String?, vararg parameters: Any) {
         if (!config.enable) {

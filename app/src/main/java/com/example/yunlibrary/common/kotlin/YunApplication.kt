@@ -3,9 +3,8 @@ package com.example.yunlibrary.common.kotlin
 import android.app.Application
 import com.example.yunlog.kotlin.YunLogConfig
 import com.example.yunlog.kotlin.YunLogManager
-import com.example.yunlog.java.YunLog as JavaYunLog
-import com.example.yunlog.java.YunLogConfig as JavaYunLogConfig
-import com.example.yunlog.java.YunLogManager as JavaYunLogManager
+typealias JavaYunLogConfig = com.example.yunlog.java.YunLogConfig
+typealias JavaYunLogManager = com.example.yunlog.java.YunLogManager
 
 class YunApplication: Application() {
 

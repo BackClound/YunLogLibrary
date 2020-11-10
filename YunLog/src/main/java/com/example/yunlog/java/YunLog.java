@@ -4,10 +4,14 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
-import kotlin.jvm.JvmOverloads;
-
+/**
+ * 面向接口编程
+ *
+ * 对外提供打印日志的方法
+ *
+ * 添加@kotlin.jvm.IvmStatic注解，是Kotlin可以在companion object找中调用
+ */
 public class YunLog {
-
     public static void i(Object... parameters) {
         log(YunLogType.I, parameters);
     }
@@ -15,11 +19,11 @@ public class YunLog {
     public static void i(@NonNull String tag, Object... parameters) {
         log(YunLogType.I, tag, parameters);
     }
-    @kotlin.jvm.JvmStatic
+
     public static void e(Object... parameters) {
         log(YunLogType.E, parameters);
     }
-    @kotlin.jvm.JvmStatic
+
     public static void e(@NonNull String tag, Object... parameters) {
         log(YunLogType.E, tag, parameters);
     }
