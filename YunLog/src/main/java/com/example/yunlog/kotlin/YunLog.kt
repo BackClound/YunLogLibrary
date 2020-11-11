@@ -16,16 +16,16 @@ import android.util.Log
 object YunLog {
     fun e(tag: String? = null, vararg parameters: Any) {
         tag?.let {
-            log(YunLogManager.mInstance.config!!, YunLogType.E, it, *parameters)
+            log(YunLogManager.mInstance.config, YunLogType.E, it, *parameters)
         } ?: run {
-            log(YunLogManager.mInstance.config!!, YunLogType.E, YunLogManager.TAG, *parameters)
+            log(YunLogManager.mInstance.config, YunLogType.E, YunLogManager.TAG, *parameters)
         }
     }
 
     fun i(tag: String? = null, vararg parameters: String) {
         tag?.let {
-            log(YunLogManager.mInstance.config!!, YunLogType.I, it, *parameters)
-        } ?: log(YunLogManager.mInstance.config!!, YunLogType.I, YunLogManager.TAG, *parameters)
+            log(YunLogManager.mInstance.config, YunLogType.I, it, *parameters)
+        } ?: log(YunLogManager.mInstance.config, YunLogType.I, YunLogManager.TAG, *parameters)
 
     }
 

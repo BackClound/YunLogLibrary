@@ -3,15 +3,15 @@ package com.example.yunlibrary.common.kotlin
 import android.app.Application
 import com.example.yunlog.kotlin.YunLogConfig
 import com.example.yunlog.kotlin.YunLogManager
+
 typealias JavaYunLogConfig = com.example.yunlog.java.YunLogConfig
 typealias JavaYunLogManager = com.example.yunlog.java.YunLogManager
 
-class YunApplication: Application() {
+class YunApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-
-        YunLogManager.setConfig(object :YunLogConfig() {
+        YunLogManager.newInstance(object : YunLogConfig() {
             override fun getGlobalTag(): String {
                 return "YunApplicationKotlin"
             }
@@ -22,7 +22,7 @@ class YunApplication: Application() {
         })
 
 
-        JavaYunLogManager.initInstance(object : JavaYunLogConfig(){
+        JavaYunLogManager.initInstance(object : JavaYunLogConfig() {
             override fun getEnable(): Boolean {
                 return true
             }

@@ -1,23 +1,13 @@
 package com.example.yunlog.kotlin
 
 
-class YunLogManager() {
-
-    public var config: YunLogConfig? = null
-
-    fun getInstance(): YunLogConfig? {
-        return config
-    }
-
+class YunLogManager(val config: YunLogConfig) {
     companion object {
         const val TAG = "YunLogManager"
+        lateinit var mInstance: YunLogManager
 
-        val mInstance: YunLogManager by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
-            YunLogManager()
-        }
-
-        fun setConfig(config: YunLogConfig) {
-            mInstance.config = config
+        fun newInstance(config: YunLogConfig) {
+            mInstance = YunLogManager(config)
         }
     }
 
