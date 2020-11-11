@@ -1,7 +1,10 @@
 package com.example.yunlog.kotlin
 
-class YunLogConfig(enable: Boolean) {
-    var enable: Boolean = enable
+public abstract class YunLogConfig() {
+
+    public abstract fun getGlobalTag(): String
+
+    public abstract fun getEnable() :Boolean
 
     companion object {
         const val TAG = "YunLogConfig"

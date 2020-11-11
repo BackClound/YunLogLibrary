@@ -11,10 +11,26 @@ class YunApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
-        YunLogManager.setConfig(YunLogConfig(true))
+        YunLogManager.setConfig(object :YunLogConfig() {
+            override fun getGlobalTag(): String {
+                return "YunApplicationKotlin"
+            }
 
-        val config = JavaYunLogConfig()
-        config.enable = true
-        JavaYunLogManager.initInstance(config)
+            override fun getEnable(): Boolean {
+                return true
+            }
+        })
+
+
+        JavaYunLogManager.initInstance(object : JavaYunLogConfig(){
+            override fun getEnable(): Boolean {
+                return true
+            }
+
+            override fun getGlobalTag(): String {
+                return "YunApplicationJava"
+            }
+
+        })
     }
 }

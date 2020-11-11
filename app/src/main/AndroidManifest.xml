@@ -18,9 +18,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".common.activity.kotlin.YunDemoActivity"/>
+        <activity android:name="com.example.yunlibrary.activity.kotlin.YunDemoActivity"/>
 
-        <activity android:name=".common.activity.java.YunDemoActivity"/>
+        <activity android:name="com.example.yunlibrary.activity.java.YunDemoActivity"/>
     </application>
 
 </manifest>

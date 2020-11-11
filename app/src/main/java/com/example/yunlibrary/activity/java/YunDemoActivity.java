@@ -1,4 +1,4 @@
-package com.example.yunlibrary.common.activity.java;
+package com.example.yunlibrary.activity.java;
 
 import android.os.Bundle;
 import android.view.View;
@@ -27,6 +27,6 @@ public class YunDemoActivity  extends AppCompatActivity {
     }
 
     private void printLog() {
-        YunLog.INSTANCE.i(null,"Kotlin : call from Java, Print I level log");
+        YunLog.INSTANCE.e(null,"Kotlin : call from Java, Print I level log");
     }
 }

@@ -1,4 +1,4 @@
-package com.example.yunlibrary.common.activity.kotlin
+package com.example.yunlibrary.activity.kotlin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -19,8 +19,8 @@ class YunDemoActivity : AppCompatActivity() {
     }
 
     fun printLog() {
-        YunLog.i(null, "Kotlin : print the I level log")
-        JavaYunLog.i(arrayListOf("Java : print the I level log"))
-        JavaYunLog.i("Java TAG", "Java : print the I Level Log")
+        YunLog.e(null, "Kotlin : print the E level log")
+        JavaYunLog.e(listOf("Java : print the E level log"))
+        JavaYunLog.e("Java TAG", "Java : print the E Level Log")
     }
 }

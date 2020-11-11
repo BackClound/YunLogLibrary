@@ -34,7 +34,7 @@ object YunLog {
     }
 
     private fun log(config: YunLogConfig, @YunLogType.Type type: Int, tag: String?, vararg parameters: Any) {
-        if (!config.enable) {
+        if (!config.getEnable()) {
             return
         }
         val message = parseMessage(*parameters)

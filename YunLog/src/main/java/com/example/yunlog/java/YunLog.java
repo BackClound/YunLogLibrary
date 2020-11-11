@@ -62,7 +62,7 @@ public class YunLog {
     }
 
     private static void log(@NonNull YunLogConfig config, @YunLogType.Type int type, @NonNull String tag, Object... parameters) {
-        if (!config.enable) {
+        if (!config.getEnable()) {
             return;
         }
         String message = parserObject(parameters);

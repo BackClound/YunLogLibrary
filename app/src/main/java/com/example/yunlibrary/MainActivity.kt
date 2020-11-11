@@ -3,10 +3,8 @@ package com.example.yunlibrary
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.yunlibrary.common.activity.kotlin.YunDemoActivity
-import com.example.yunlog.kotlin.YunLog
+import com.example.yunlibrary.activity.kotlin.YunDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
-typealias JavaYunLog = com.example.yunlog.java.YunLog
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
