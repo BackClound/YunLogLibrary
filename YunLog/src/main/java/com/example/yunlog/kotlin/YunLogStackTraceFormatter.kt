@@ -1,7 +1,7 @@
 package com.example.yunlog.kotlin
 
-class YunLogStackTraceFormatter : YunLogFormatter<StackTraceElement> {
-    override fun format(data: StackTraceElement): String {
-        return data.className
+class YunLogStackTraceFormatter : YunLogFormatter<MutableList<StackTraceElement>> {
+    override fun format(data: MutableList<StackTraceElement>): String {
+        return data.toString()
     }
 }

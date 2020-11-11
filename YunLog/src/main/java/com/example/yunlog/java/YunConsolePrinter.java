@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import static com.example.yunlog.java.YunLogConfig.LINE_MAX_LENGTH;
 
-class YunConsolePrinter implements YunLogPrinter {
+public class YunConsolePrinter implements YunLogPrinter {
     @Override
     public void print(@NonNull YunLogConfig config, int level, String tag, @NonNull String printString) {
         int len = printString.length();

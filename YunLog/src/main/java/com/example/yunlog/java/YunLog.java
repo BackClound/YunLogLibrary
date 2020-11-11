@@ -4,6 +4,8 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 /**
  * 面向接口编程
  *
@@ -62,12 +64,32 @@ public class YunLog {
     }
 
     private static void log(@NonNull YunLogConfig config, @YunLogType.Type int type, @NonNull String tag, Object... parameters) {
+        StringBuffer logString =new StringBuffer();
         if (!config.getEnable()) {
             return;
         }
-        String message = parserObject(parameters);
-        Log.println(type, tag, message);
+        if (config.enableThread()) {
+            String threadLog = YunLogConfig.YUN_THREAD_FORMATTER.format(Thread.currentThread());
+            logString.append(threadLog);
+            logString.append("\n");
+        }
 
+        if (config.enableStackTrace() && config.getStackTraceDepth() > 0) {
+            String stackTraceLog = YunLogConfig.YUN_STACK_TRACE_FORMATTER.format(new Throwable().getStackTrace());
+            logString.append(stackTraceLog);
+            logString.append("\n");
+        }
+
+        String message = parserObject(parameters);
+        logString.append(message);
+
+        ArrayList<YunLogPrinter> printers = config.getPrinters() != null ? config.getPrinters() : YunLogManager.getInstance().getPrinters();
+        if (printers == null || printers.isEmpty()) {
+            return;
+        }
+        for (YunLogPrinter printer: printers) {
+            printer.print(config, type, tag, logString.toString());
+        }
     }
 
     private static String parserObject(Object[] parameters) {

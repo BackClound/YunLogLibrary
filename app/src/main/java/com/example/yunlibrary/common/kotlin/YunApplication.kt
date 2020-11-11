@@ -1,11 +1,12 @@
 package com.example.yunlibrary.common.kotlin
 
 import android.app.Application
-import com.example.yunlog.kotlin.YunLogConfig
-import com.example.yunlog.kotlin.YunLogManager
+import com.example.yunlog.kotlin.*
 
 typealias JavaYunLogConfig = com.example.yunlog.java.YunLogConfig
 typealias JavaYunLogManager = com.example.yunlog.java.YunLogManager
+typealias JavaYunLogPrinter = com.example.yunlog.java.YunLogPrinter
+typealias JavaYunConsolePrinter = com.example.yunlog.java.YunConsolePrinter
 
 class YunApplication : Application() {
 
@@ -19,7 +20,7 @@ class YunApplication : Application() {
             override fun getEnable(): Boolean {
                 return true
             }
-        })
+        }, mutableListOf<YunLogPrinter>(YunConsolePrinter()))
 
 
         JavaYunLogManager.initInstance(object : JavaYunLogConfig() {
@@ -31,6 +32,6 @@ class YunApplication : Application() {
                 return "YunApplicationJava"
             }
 
-        })
+        }, arrayListOf<JavaYunLogPrinter>(JavaYunConsolePrinter()))
     }
 }

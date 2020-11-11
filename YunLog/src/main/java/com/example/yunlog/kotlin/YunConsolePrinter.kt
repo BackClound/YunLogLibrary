@@ -3,8 +3,8 @@ package com.example.yunlog.kotlin
 import android.util.Log
 import com.example.yunlog.java.YunLogConfig.LINE_MAX_LENGTH
 
-class YunConsolePrinter : YunLogPrinter {
-    override fun print(config: YunLogConfig, type: Int, tag: String, printString: String) {
+open class YunConsolePrinter : YunLogPrinter {
+    override fun print(config: YunLogConfig, type: Int, tag: String?, printString: String) {
         val len = printString.length
         val depth = len / LINE_MAX_LENGTH
 
