@@ -14,7 +14,7 @@ open class YunConsolePrinter : YunLogPrinter {
             }
             else -> {
                 var index = 0
-                for (subLength in 0..depth) {
+                for (subLength in 0 until depth-1) {
                     Log.println(type, tag, printString.substring(index, index + LINE_MAX_LENGTH))
                     index += LINE_MAX_LENGTH
                 }
