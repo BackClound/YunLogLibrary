@@ -25,14 +25,14 @@ public abstract class YunLogConfig {
         return null;
     }
 
-    public JsonParser injectJsonParser(JsonParser parser) {
+    public JsonParser injectJsonParser() {
         return null;
     }
 
     public abstract String getGlobalTag();
     public abstract boolean getEnable();
 
-    interface JsonParser {
+    public interface JsonParser {
         String toJson(Object o);
     }
 

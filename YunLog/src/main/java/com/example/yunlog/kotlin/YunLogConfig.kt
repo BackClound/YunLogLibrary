@@ -14,7 +14,7 @@ public abstract class YunLogConfig() {
         return arrayListOf()
     }
 
-    fun injectJsonParser(parser: JsonParser): JsonParser? {
+    open fun injectJsonParser(): JsonParser? {
         return null
     }
 

@@ -33,7 +33,7 @@ object YunLog {
 
     }
 
-    private fun log(config: YunLogConfig, @YunLogType.Type type: Int, tag: String?, vararg parameters: Any) {
+    public fun log(config: YunLogConfig, @YunLogType.Type type: Int, tag: String?, vararg parameters: Any) {
         val logString = StringBuffer()
         if (!config.getEnable()) {
             return
@@ -48,7 +48,7 @@ object YunLog {
             logString.append(stackTraceLog).append("\n")
         }
 
-        logString.append(parseMessage(*parameters))
+        logString.append(parseMessage(config, *parameters))
         val logPrinters = config.getPrinters()?.let {
            if (it.isEmpty()) YunLogManager.mInstance.printers else it
         }
@@ -62,10 +62,18 @@ object YunLog {
         Log.println(type, tag, logString.toString())
     }
 
-    private fun parseMessage(vararg parameters: Any): String {
+    private fun parseMessage(config: YunLogConfig, vararg parameters: Any): String? {
         val buffer = StringBuffer()
+
+        if (config.injectJsonParser() != null) {
+            return config.injectJsonParser()?.toJson(parameters)
+        }
+
         for (o in parameters) {
-            buffer.append(o)
+            buffer.append(o).append(";")
+        }
+        if (buffer.isNotEmpty()){
+            buffer.deleteCharAt(buffer.length -1)
         }
 
         return buffer.toString()

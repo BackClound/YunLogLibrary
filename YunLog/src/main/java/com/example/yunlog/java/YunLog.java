@@ -75,7 +75,7 @@ public class YunLog {
         }
 
         if (config.enableStackTrace() && config.getStackTraceDepth() > 0) {
-            String stackTraceLog = YunLogConfig.YUN_STACK_TRACE_FORMATTER.format(new Throwable().getStackTrace());
+            String stackTraceLog = YunLogConfig.YUN_STACK_TRACE_FORMATTER.format(YunLogStackTraceUtil.getRealCropStackTrace(new Throwable().getStackTrace(), config.getGlobalTag(), config.getStackTraceDepth()));
             logString.append(stackTraceLog);
             logString.append("\n");
         }
