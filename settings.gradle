@@ -1,3 +1,4 @@
+include ':YunUILibrary'
 include ':YunLog'
 include ':app'
 rootProject.name = "YunLibrary"

@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/YunLog" />
+            <option value="$PROJECT_DIR$/YunUILibrary" />
             <option value="$PROJECT_DIR$/app" />
           </set>
         </option>
