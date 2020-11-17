@@ -6,7 +6,7 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
-interface IYunBottomLayout<TabView extends ViewGroup, TabInfo> {
+public interface IYunBottomLayout<TabView extends ViewGroup, TabInfo> {
 
     void addTabSelectedChangeListener(@NonNull OnTabSelectedListener<TabInfo> listener);
 
@@ -16,7 +16,7 @@ interface IYunBottomLayout<TabView extends ViewGroup, TabInfo> {
 
     void instantiateTabList(@NonNull List<TabInfo> tabInfoList);
 
-    interface OnTabSelectedListener<TabInfo> {
+    public interface OnTabSelectedListener<TabInfo> {
         void onTabSelectedChange(int index, @NonNull TabInfo preTab, @NonNull TabInfo nextTab);
     }
 

@@ -32,13 +32,15 @@ public class YunBottomTabInfo<Icon> {
         this.name = name;
         this.defaultBitmap = defaultBitmap;
         this.selectedBitmap = selectedBitmap;
+        this.iconType = IconType.BITMAP;
     }
 
-    public YunBottomTabInfo(String defaultName, String selectedName, Icon defaultIcon, Icon selectedIcon, IconType iconType) {
+    public YunBottomTabInfo(String defaultName, String selectedName, Icon defaultIcon, Icon selectedIcon, String iconFont) {
         this.defaultName = defaultName;
         this.selectedName = selectedName;
         this.defaultIcon = defaultIcon;
         this.selectedIcon = selectedIcon;
-        this.iconType = iconType;
+        this.iconType = IconType.COLOR;
+        this.iconFont = iconFont;
     }
 }
