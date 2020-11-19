@@ -27,6 +27,8 @@
 
         </activity>
 
+        <activity android:name=".activity.java.YunTopLayoutActivity"/>
+
         <activity android:name="com.example.yunlibrary.activity.kotlin.YunDemoActivity"/>
 
         <activity android:name="com.example.yunlibrary.activity.java.YunDemoActivity"/>

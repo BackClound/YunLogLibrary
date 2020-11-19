@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.yunlibrary.activity.java.YunBottomLayoutActivity
+import com.example.yunlibrary.activity.java.YunTopLayoutActivity
 import com.example.yunlibrary.activity.kotlin.YunDemoActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,6 +19,10 @@ class MainActivity : AppCompatActivity() {
 
         textview_bottom_view.setOnClickListener {
             startActivity(Intent(this, YunBottomLayoutActivity::class.java))
+        }
+
+        textview_top_view.setOnClickListener {
+            startActivity(Intent(this, YunTopLayoutActivity::class.java))
         }
     }
 
