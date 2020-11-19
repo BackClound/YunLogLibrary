@@ -41,7 +41,7 @@ public class YunTopTab extends RelativeLayout implements IYunTopTab<YunTopTabInf
     }
 
     private void initView() {
-        ViewGroup rootView = (ViewGroup) LayoutInflater.from(getContext()).inflate(R.layout.top_tab_item_layout, this);
+        LayoutInflater.from(getContext()).inflate(R.layout.top_tab_item_layout, this);
         topImageView = findViewById(R.id.imageview_top_bitmap);
         topTabName = findViewById(R.id.textview_top_name);
         indicator = findViewById(R.id.indicator_top_tab_view);
@@ -49,15 +49,13 @@ public class YunTopTab extends RelativeLayout implements IYunTopTab<YunTopTabInf
 
     @Override
     public void setTopInfo(@NonNull YunTopTabInfo<?> yunTopTabInfo) {
-        if (topTabInfo != yunTopTabInfo) {
-            topTabInfo = yunTopTabInfo;
-        }
+        topTabInfo = yunTopTabInfo;
         initInfo(false, true);
     }
 
-    private void initInfo(boolean selected, boolean inited) {
+    private void initInfo(boolean selected, boolean init) {
         if (topTabInfo.tabType == YunTopTabInfo.TabType.TEXT) {
-            if (inited) {
+            if (init) {
                 topImageView.setVisibility(GONE);
                 topTabName.setVisibility(VISIBLE);
                 if (!TextUtils.isEmpty(topTabInfo.name)) {
@@ -73,7 +71,7 @@ public class YunTopTab extends RelativeLayout implements IYunTopTab<YunTopTabInf
                 topTabName.setTextColor(getTextColor(topTabInfo.defaultIconFont));
             }
         } else if (topTabInfo.tabType == YunTopTabInfo.TabType.BITMAP) {
-            if (inited) {
+            if (selected) {
                 topImageView.setVisibility(VISIBLE);
                 topTabName.setVisibility(GONE);
             }

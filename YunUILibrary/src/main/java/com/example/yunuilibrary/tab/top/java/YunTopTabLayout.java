@@ -81,10 +81,8 @@ public class YunTopTabLayout extends FrameLayout implements IYunTopLayout<YunTop
 
     @Override
     public void inflateInfo(@NonNull List<YunTopTabInfo<?>> yunTopTabInfos) {
-        if (!yunTopTabInfos.isEmpty()) return;
-        if (topTabInfos != yunTopTabInfos) {
-            topTabInfos.addAll(yunTopTabInfos);
-        }
+        if (yunTopTabInfos.isEmpty()) return;
+        topTabInfos = yunTopTabInfos;
 
         LinearLayout rootView = getLinearLayout(true);
         selectedTopTab = null;
