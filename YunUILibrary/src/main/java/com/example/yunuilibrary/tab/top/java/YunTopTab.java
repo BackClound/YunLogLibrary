@@ -114,4 +114,14 @@ public class YunTopTab extends RelativeLayout implements IYunTopTab<YunTopTabInf
             initInfo(true, false);
         }
     }
+
+    @Override
+    public String toString() {
+        return "YunTopTab{" +
+                "topTabInfo=" + topTabInfo +
+                ", topImageView=" + topImageView +
+                ", topTabName=" + topTabName +
+                ", indicator=" + indicator +
+                '}';
+    }
 }

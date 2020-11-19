@@ -2,14 +2,14 @@ package com.example.yunuilibrary.tab.top.java;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.yunuilibrary.tab.common.java.IYunTopLayout;
 
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class YunTopTabLayout extends FrameLayout implements IYunTopLayout<YunTopTab, YunTopTabInfo<?> > {
+public class YunTopTabLayout extends HorizontalScrollView implements IYunTopLayout<YunTopTab, YunTopTabInfo<?>> {
     private List<IYunTopLayout.OnTabSelectedListener<YunTopTabInfo<?>>> topTabListeners = new ArrayList<>();
     private List<YunTopTabInfo<?>> topTabInfos = new ArrayList<>();
     private YunTopTabInfo<?> selectedTopTab = null;
@@ -35,7 +35,7 @@ public class YunTopTabLayout extends FrameLayout implements IYunTopLayout<YunTop
     }
 
     private void onSelected(YunTopTabInfo<?> tabInfo) {
-        for (OnTabSelectedListener<YunTopTabInfo<?>> listener: topTabListeners) {
+        for (OnTabSelectedListener<YunTopTabInfo<?>> listener : topTabListeners) {
             listener.onTabSelectedChanged(topTabInfos.indexOf(tabInfo), selectedTopTab, tabInfo);
         }
         this.selectedTopTab = tabInfo;
@@ -61,7 +61,7 @@ public class YunTopTabLayout extends FrameLayout implements IYunTopLayout<YunTop
     public YunTopTab findTopTab(@NonNull YunTopTabInfo<?> yunTopTabInfo) {
         ViewGroup ll = (ViewGroup) getRootView();
 
-        for (int i=0; i< ll.getChildCount(); i ++) {
+        for (int i = 0; i < ll.getChildCount(); i++) {
             View childView = ll.getChildAt(i);
             if (childView instanceof YunTopTab) {
                 YunTopTabInfo topTabInfo = ((YunTopTab) childView).getTopTabInfo();
@@ -94,11 +94,14 @@ public class YunTopTabLayout extends FrameLayout implements IYunTopLayout<YunTop
             }
         }
 
-        for (int i =0; i < topTabInfos.size(); i++) {
+        for (int i = 0; i < topTabInfos.size(); i++) {
             final YunTopTabInfo<?> tabInfo = topTabInfos.get(i);
             YunTopTab topTab = new YunTopTab(getContext());
             topTabListeners.add(topTab);
             topTab.setTopInfo(tabInfo);
+            Log.e(" top view", topTab.toString());
+//            YunLog.INSTANCE.e(" top view ", topTab.toString());
+
             rootView.addView(topTab);
             topTab.setOnClickListener(new OnClickListener() {
                 @Override

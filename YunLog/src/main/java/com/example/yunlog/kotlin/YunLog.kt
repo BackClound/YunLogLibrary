@@ -38,15 +38,15 @@ object YunLog {
         if (!config.getEnable()) {
             return
         }
-        if (config.enableThread()) {
-            val threadLog = YunLogConfig.YUN_THREAD_FORMATTER.format(Thread.currentThread())
-            logString.append(threadLog).append("\n")
-        }
-
-        if (config.enableStackTrace() && config.getStackTraceDepth() > 0) {
-            val stackTraceLog = YunLogConfig.YUN_STACK_TRACE_FORMATTER.format(Throwable().stackTrace.toMutableList())
-            logString.append(stackTraceLog).append("\n")
-        }
+//        if (config.enableThread()) {
+//            val threadLog = YunLogConfig.YUN_THREAD_FORMATTER.format(Thread.currentThread())
+//            logString.append(threadLog).append("\n")
+//        }
+//
+//        if (config.enableStackTrace() && config.getStackTraceDepth() > 0) {
+//            val stackTraceLog = YunLogConfig.YUN_STACK_TRACE_FORMATTER.format(Throwable().stackTrace.toMutableList())
+//            logString.append(stackTraceLog).append("\n")
+//        }
 
         logString.append(parseMessage(config, *parameters))
         val logPrinters = config.getPrinters()?.let {

@@ -33,4 +33,17 @@ public class YunTopTabInfo<IconFont> {
         this.selectedIconFont = selectedIconFont;
         this.tabType = tabType;
     }
+
+    @Override
+    public String toString() {
+        return "YunTopTabInfo{" +
+                "name='" + name + '\'' +
+                ", fragment=" + fragment +
+                ", defaultIconFont=" + defaultIconFont +
+                ", selectedIconFont=" + selectedIconFont +
+                ", defaultBitmap=" + defaultBitmap +
+                ", selectedBitmap=" + selectedBitmap +
+                ", tabType=" + tabType +
+                '}';
+    }
 }
