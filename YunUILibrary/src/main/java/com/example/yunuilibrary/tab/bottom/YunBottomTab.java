@@ -17,7 +17,7 @@ import com.example.yunuilibrary.R;
 import com.example.yunuilibrary.tab.common.java.IYunBottomTab;
 
 
-class YunBottomTab extends RelativeLayout implements IYunBottomTab<YunBottomTabInfo<?>> {
+public class YunBottomTab extends RelativeLayout implements IYunBottomTab<YunBottomTabInfo<?>> {
 
     private ImageView tabImageView;
     private TextView tabIconView;
@@ -43,7 +43,6 @@ class YunBottomTab extends RelativeLayout implements IYunBottomTab<YunBottomTabI
         tabIconView = findViewById(R.id.textview_icon);
         tabNameView = findViewById(R.id.textview_name);
         tabImageView = findViewById(R.id.imageview_ic_title);
-
     }
 
     @Override
@@ -59,7 +58,7 @@ class YunBottomTab extends RelativeLayout implements IYunBottomTab<YunBottomTabI
     }
 
     private void inflateInfo(boolean selected, boolean initialized) {
-        if (tabInfo.iconType == YunBottomTabInfo.IconType.COLOR) {
+        if (tabInfo.iconType == YunBottomTabInfo.IconType.ICONFONT) {
             if (initialized) {
                 tabIconView.setVisibility(VISIBLE);
                 tabImageView.setVisibility(GONE);
@@ -72,12 +71,12 @@ class YunBottomTab extends RelativeLayout implements IYunBottomTab<YunBottomTabI
             }
 
             if (selected) {
-                tabNameView.setTextColor(getTextColor(tabInfo.selectedIcon));
-                tabIconView.setTextColor(getTextColor(tabInfo.selectedIcon));
+                tabNameView.setTextColor(getTextColor(tabInfo.selectedIconFont));
+                tabIconView.setTextColor(getTextColor(tabInfo.selectedIconFont));
                 tabIconView.setText(TextUtils.isEmpty(tabInfo.selectedName) ? tabInfo.defaultName : tabInfo.selectedName);
             } else {
-                tabNameView.setTextColor(getTextColor(tabInfo.defaultIcon));
-                tabIconView.setTextColor(getTextColor(tabInfo.defaultIcon));
+                tabNameView.setTextColor(getTextColor(tabInfo.defaultIconFont));
+                tabIconView.setTextColor(getTextColor(tabInfo.defaultIconFont));
                 tabIconView.setText(tabInfo.defaultName);
             }
         } else if (tabInfo.iconType == YunBottomTabInfo.IconType.BITMAP) {

@@ -4,9 +4,9 @@ import android.graphics.Bitmap;
 
 import androidx.fragment.app.Fragment;
 
-public class YunBottomTabInfo<Icon> {
+public class YunBottomTabInfo<IconFont> {
     public enum IconType {
-        BITMAP, COLOR, DRAWABLE
+        BITMAP, ICONFONT, DRAWABLE
     }
 
     /**
@@ -23,8 +23,8 @@ public class YunBottomTabInfo<Icon> {
      */
     public String defaultName;
     public String selectedName;
-    public Icon defaultIcon;
-    public Icon selectedIcon;
+    public IconFont defaultIconFont;
+    public IconFont selectedIconFont;
 
     public IconType iconType;
 
@@ -35,12 +35,13 @@ public class YunBottomTabInfo<Icon> {
         this.iconType = IconType.BITMAP;
     }
 
-    public YunBottomTabInfo(String defaultName, String selectedName, Icon defaultIcon, Icon selectedIcon, String iconFont) {
+    public YunBottomTabInfo(String name, String defaultName, String selectedName, IconFont defaultIconFont, IconFont selectedIconFont, String iconFont) {
+        this.name = name;
         this.defaultName = defaultName;
         this.selectedName = selectedName;
-        this.defaultIcon = defaultIcon;
-        this.selectedIcon = selectedIcon;
-        this.iconType = IconType.COLOR;
+        this.defaultIconFont = defaultIconFont;
+        this.selectedIconFont = selectedIconFont;
+        this.iconType = IconType.ICONFONT;
         this.iconFont = iconFont;
     }
 }

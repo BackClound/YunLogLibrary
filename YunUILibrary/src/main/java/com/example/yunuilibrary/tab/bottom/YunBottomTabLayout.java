@@ -44,11 +44,22 @@ public class YunBottomTabLayout extends FrameLayout implements IYunBottomLayout<
 
     public YunBottomTabLayout(@NonNull Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView();
     }
 
-    private void initView() {
+    public void setBottomAlpha(float bottomAlpha) {
+        this.bottomAlpha = bottomAlpha;
+    }
 
+    public static void setBottomHeight(float bottomHeight) {
+        YunBottomTabLayout.bottomHeight = bottomHeight;
+    }
+
+    public void setBottomLineHeight(float bottomLineHeight) {
+        this.bottomLineHeight = bottomLineHeight;
+    }
+
+    public void setBottomLineColor(String bottomLineColor) {
+        this.bottomLineColor = bottomLineColor;
     }
 
     @Override
@@ -83,9 +94,14 @@ public class YunBottomTabLayout extends FrameLayout implements IYunBottomLayout<
 
         this.tabInfos = yunBottomTabInfos;
         //清除之前的View,添加新的View
-        for (int i =0; i < getChildCount(); i++){
+        for (int i = getChildCount() -1; i >0; i++) {
             removeViewAt(i);
         }
+
+        //不能使用这种方法清除View，会将其余主页面内容布局清空
+      /*  for (int i =0; i < getChildCount(); i++){
+            removeViewAt(i);
+        }*/
 
         selectedInfo = null;
         addBackground();
