@@ -7,14 +7,18 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.FrameLayout;
+import android.widget.ScrollView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.yunlog.java.YunLogDisplayUtil;
 import com.example.yunuilibrary.R;
 import com.example.yunuilibrary.tab.common.java.IYunBottomLayout;
+import com.example.yunuilibrary.tab.util.java.YunViewUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -138,7 +142,7 @@ public class YunBottomTabLayout extends FrameLayout implements IYunBottomLayout<
         addBottomLine();
         addView(ll, params);
         
-
+        adapterBottomMargin();
     }
 
     private void addBottomLine() {
@@ -166,5 +170,25 @@ public class YunBottomTabLayout extends FrameLayout implements IYunBottomLayout<
         addView(backgroundView, params);
 
         backgroundView.setAlpha(bottomAlpha);
+    }
+
+    private void adapterBottomMargin() {
+        if (!(getChildAt(0) instanceof ViewGroup)) {
+            return;
+        }
+
+        ViewGroup contentView = (ViewGroup) getChildAt(0);
+        ViewGroup targetView = YunViewUtil.findTypeView(contentView, RecyclerView.class);
+        if (targetView == null) {
+            targetView = YunViewUtil.findTypeView(contentView, ScrollView.class);
+        }
+        if (targetView == null) {
+            targetView = YunViewUtil.findTypeView(contentView, AbsListView.class);
+        }
+
+        if (targetView != null) {
+            targetView.setPadding(0,0,0,YunLogDisplayUtil.dp2px(bottomHeight + 5, getResources()));
+            targetView.setClipToPadding(false);
+        }
     }
 }
