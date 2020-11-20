@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Color;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,7 @@ public class YunTopTab extends RelativeLayout implements IYunTopTab<YunTopTabInf
                 topTabName.setTextColor(getTextColor(topTabInfo.defaultIconFont));
             }
         } else if (topTabInfo.tabType == YunTopTabInfo.TabType.BITMAP) {
+            Log.e("Bitmap TOP Tab", "top Tab Name is been Gone");
             if (selected) {
                 topImageView.setVisibility(VISIBLE);
                 topTabName.setVisibility(GONE);

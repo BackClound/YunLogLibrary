@@ -1,8 +1,11 @@
 package com.example.yunuilibrary.tab.util.java;
 
+import android.content.Context;
+import android.graphics.Point;
 import android.view.Display;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
@@ -30,5 +33,16 @@ public class YunViewUtil {
             }
         }
         return null;
+    }
+
+    public static int getWindowWidthInPx(Context context) {
+        WindowManager wm = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+        if (wm != null) {
+            Display display = wm.getDefaultDisplay();
+            Point point = new Point();
+            display.getSize(point);
+            return point.x;
+        }
+        return 0;
     }
 }
